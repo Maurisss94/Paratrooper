@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import acm.graphics.GImage;
 
-public class ObjectesMovils {
+public abstract class ObjectesMovils {
 
     GImage  imatge;
     boolean haSortit;
-    int velocitat = 10;
-    int pausa = 10;
+    int velocitat = 5;
+    int pausa = 20;
 
     public ObjectesMovils(GImage imatge, boolean haSortit){
         this.imatge = imatge;
@@ -33,8 +33,19 @@ public class ObjectesMovils {
     }
 
     public void MouHoritzontal(){
-        this.getImatge().move(0, velocitat);
+        this.getImatge().move(velocitat, 0);
         this.getImatge().pause(pausa);
+    }
+
+    public boolean haSortit(Principal pissarra){
+
+        if(this.getImatge().getX() > 0 || this.getImatge().getX() <= pissarra.getWidth()){
+            this.setHaSortit(false);
+            return false;
+        }else{
+            return true;
+
+        }
     }
 
 
